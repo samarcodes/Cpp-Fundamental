@@ -15,11 +15,8 @@ class Complex
 public:
 	Complex(): a(0), b(0), p(NULL) //Default Constructor
 	{}
-	Complex(int x, int y, int z) { //Parameterised Constructor
-		a = x;
-		b = y;
-		p = &z;
-	}
+	Complex(int x, int y, int z): a(x), b(y), p(&z) //Parameterised Constructor
+	{}
 	Complex(Complex &c) { //Copy Constructor
 		a = c.a;
 		b = c.b;
