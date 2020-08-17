@@ -21,7 +21,7 @@ int multiply(int result[], int x, int result_size) {
 }
 
 void factorial(int n) {
-	int result[1134] = {0};
+	int result[1500] = {0};
 
 	result[0] = 1;
 	int result_size = 1;
