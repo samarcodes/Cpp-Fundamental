@@ -17,7 +17,7 @@ public:
 	{}
 	Complex(int x, int y, int z): a(x), b(y), p(&z) //Parameterised Constructor
 	{}
-	Complex(Complex &c) { //Copy Constructor
+	Complex(const Complex &c) { //Copy Constructor
 		a = c.a;
 		b = c.b;
 		p = new int;
