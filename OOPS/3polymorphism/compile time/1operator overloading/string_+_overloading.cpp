@@ -12,7 +12,7 @@ private:
 public:
 	String() {}
 
-	String operator+(String &s) {
+	String operator+(const String &s) {
 		String temp;
 		temp.size = size + s.size;
 

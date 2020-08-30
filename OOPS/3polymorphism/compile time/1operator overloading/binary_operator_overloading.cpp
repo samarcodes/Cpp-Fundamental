@@ -19,7 +19,13 @@ public:
 		a = x;
 		b = y;
 	}
-	Complex operator+ (Complex c) {
+	Complex operator+ (const Complex &c) {
+		Complex temp;
+		temp.a = a + c.a;
+		temp.b = b + c.b;
+		return temp;
+	}
+	Complex operator- (const Complex &c) {
 		Complex temp;
 		temp.a = a + c.a;
 		temp.b = b + c.b;
@@ -38,5 +44,5 @@ int main() {
 	c2.show();
 
 	Complex c3 = c1 + c2;
-	cout << c3 << endl;
+	c3.show();
 }

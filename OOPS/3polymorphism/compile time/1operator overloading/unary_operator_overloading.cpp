@@ -18,20 +18,28 @@ public:
 		a = x;
 		b = y;
 	}
-	Complex operator-() {
+	Complex operator+() { //unary +
+		Complex temp;
+		temp.a = abs(a);
+		temp.b = abs(b);
+		return temp;
+	}
+	Complex operator-() {  //unary -
 		Complex temp;
 		temp.a = -a;
 		temp.b = -b;
 		return temp;
 	}
-	Complex operator++() {
+	Complex operator++() { //pre increment
 		Complex temp;
 		temp.a = ++a;
 		temp.b = ++b;
 
 		return temp;
 	}
-	Complex operator++(int) { //dummy parameter helps in identifying compiler that this is for post-oncrement
+	//dummy parameter helps in identifying
+	//compiler that this is for post-increment
+	Complex operator++(int) {
 		Complex temp;
 		temp.a = a++;
 		temp.b = b++;

@@ -1,64 +1,95 @@
+//friend function
+
 #include<iostream>
 
 using namespace std;
 
 class Complex
 {
-	int a;
-	int b;
+	int real;
+	int imag;
 
 public:
-	Complex() {}
-	Complex(int x, int y) {
-		a = x;
-		b = y;
-	}
+	Complex(): real(0), imag(0)
+	{}
+	Complex(int x, int y): real(x), imag(y)
+	{}
+	//declared inside class
+	friend Complex operator-(const Complex&); //unary -
+	friend Complex operator+(const Complex&); //unary +
+	friend Complex operator++(Complex&);  //pre increment
+	friend Complex operator++(Complex&, int); //post increment
+	friend Complex operator+(const Complex&, const Complex&); //binary +
+	friend Complex operator-(const Complex&, const Complex&); //binary -
+	friend istream& operator>>(istream&, Complex&);
+	friend ostream& operator<<(ostream&, const Complex&);
 	void show() {
-		cout << a << " " << b << endl;
+		cout << real << " " << imag << endl;
 	}
-	friend Complex operator+ (Complex, Complex);
-	friend Complex operator++ (Complex &);
-	friend Complex operator++ (Complex &, int);
-	friend ostream& operator<< (ostream &, Complex);
-	friend istream& operator>> (istream &, Complex &);
 };
 
-Complex operator+ (Complex x, Complex y) {
+//defined outside class
+
+Complex operator-(const Complex &c) {
 	Complex temp;
-	temp.a = x.a + y.a;
-	temp.b = x.b + y.b;
+	temp.real = -c.real;
+	temp.imag = -c.imag;
 	return temp;
 }
 
-Complex operator++(Complex &c) {//defining it outside the class
+Complex operator+(const Complex &c) {
 	Complex temp;
-	temp.a = ++c.a; //here we can access private members of c1 & c2
-	temp.b = ++c.b;
+	temp.real = abs(c.real);
+	temp.imag = abs(c.imag);
 	return temp;
 }
+
+Complex operator++(Complex &c) {
+	Complex temp;
+	temp.real = ++c.real;
+	temp.imag = ++c.imag;
+	return temp;
+}
+
 Complex operator++(Complex &c, int dummy) {
 	Complex temp;
-	temp.a = c.a++;
-	temp.b = c.b++;
+	temp.real = c.real++;
+	temp.imag = c.imag++;
 	return temp;
 }
 
-ostream& operator<< (ostream &dout, Complex c) {
-	cout << c.a << " " << c.b;
-	return dout;
+Complex operator+(const Complex &a, const Complex &b) {
+	Complex temp;
+	temp.real = a.real + b.real;
+	temp.imag = a.imag + b.imag;
+	return temp;
 }
-istream& operator>> (istream &din, Complex &c) {
-	cin >> c.a >> c.b;
+
+Complex operator-(const Complex &a, const Complex &b) {
+	Complex temp;
+	temp.real = a.real - b.real;
+	temp.imag = a.imag - b.imag;
+	return temp;
+}
+
+istream& operator>>(istream& din, Complex& c) {
+	cout << "Enter real value : ";
+	cin >> c.real;
+	cout << "Enter imaginary value : ";
+	cin >> c.imag;
+	return din;
+}
+
+ostream& operator<<(ostream& din, const Complex& c) {
+	cout << c.real << " " << c.imag;
 	return din;
 }
 
 int main() {
 	Complex c1(10, 20);
 	Complex c2(30, 40);
-
 	Complex c3;
 	cin >> c3;
-
 	cout << c1 << endl;
 	cout << c2 << endl;
 	cout << c3 << endl;

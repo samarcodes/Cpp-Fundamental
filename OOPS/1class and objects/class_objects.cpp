@@ -15,7 +15,6 @@ private:
 	int roll_no;
 	static string school; //class member variable
 
-
 public:
 	void set_data(string n, int a, int r) {   //instance member function
 		name = n;
