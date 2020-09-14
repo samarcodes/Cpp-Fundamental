@@ -1,3 +1,4 @@
+//char * strtok ( char * str, const char * delimiters );
 #include<iostream>
 #include<cstring>
 
@@ -5,14 +6,14 @@ using namespace std;
 
 int main()
 {
-	char s[100]="Today is a rainy day";
+	char s[100] = "Today is a rainy day";
 
-	char *ptr = strtok(s," ");
-	cout<<ptr<<endl;
+	char *ptr = strtok(s, " ");
+	cout << ptr << endl;
 
-	while(ptr!=NULL){
-		ptr=strtok(NULL," ");
-		cout<<ptr<<endl;
+	while (ptr != NULL) {
+		ptr = strtok(NULL, " ");
+		cout << ptr << endl;
 	}
 
 	return 0;
