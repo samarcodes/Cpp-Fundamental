@@ -5,20 +5,20 @@ using namespace std;
 //using temp array
 //time : O(n)
 //space : O(d)
-void rotate1(int a[], int n, int k) {
-	int temp[k];
+void rotate1(int a[], int n, int rotation_factor) {
+	int temp[rotation_factor];
 	int i;
 
-	for (i = 0; i < k; i++) {
+	for (i = 0; i < rotation_factor; i++) {
 		temp[i] = a[i];
 	}
 
-	for (i = k; i < n; i++) {
-		a[i - k] = a[i];
+	for (i = rotation_factor; i < n; i++) {
+		a[i - rotation_factor] = a[i];
 	}
 
 	int j = 0;
-	for (i = n - k; i < n; i++) {
+	for (i = n - rotation_factor; i < n; i++) {
 		a[i] = temp[j++];
 	}
 }
@@ -35,8 +35,8 @@ void rotateleft(int arr[], int n) {
 	arr[i - 1] = temp;
 }
 
-void rotate2(int arr[], int n, int k) {
-	for (int i = 0; i < k; i++) {
+void rotate2(int arr[], int n, int rotation_factor) {
+	for (int i = 0; i < rotation_factor; i++) {
 		rotateleft(arr, n);
 	}
 }
@@ -53,22 +53,25 @@ int gcd(int a, int b) {
 	}
 }
 
-void rotate3(int arr[], int n, int k) {
-	k %= n;
-	if (k == 0)
+void rotate3(int arr[], int n, int rotation_factor) {
+	rotation_factor %= n;
+	if (rotation_factor == 0)
 		return;
 
-	int g_c_d = gcd(n, k);
+	int g_c_d = gcd(n, rotation_factor);
 	int i;
 	for (i = 0; i < g_c_d; i++) {
 		int temp = arr[i];
 		int j = i;
 		while (1) {
-			int d = j + k;
+			int d = j + rotation_factor;
 
 			if (d >= n) {
-				d = d - n;
+				d = n;
 			}
+			//this statement is always after the first if statement
+			//coz if d>=n(10 elements 12 index) then we have to make
+			//it 12-10=2 first
 			if (d == i)
 				break;
 
