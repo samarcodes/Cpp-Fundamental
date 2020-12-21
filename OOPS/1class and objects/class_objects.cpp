@@ -34,8 +34,8 @@ string Student:: school = "DAV Public School";
 
 int main() {
 	Student s1; //object of Student class
-	s1.set_data("samar", 21, 108);
-	s1.show_data();
+	s1.set_data("samar", 21, 108); //s1 is caller object
+	s1.show_data(); //"." is dot/period/class member access operator
 
 	Student::show_school();
 
