@@ -12,8 +12,8 @@ class Book
 	char title[20];
 	float price;
 public:
-	Book(): bookid(0), title("no title"), price(0)
-	{}
+	Book(): bookid(0), title("no title"), price(0) {}
+
 	void getBookData() {
 		cout << "Enter bookid : ";
 		cin >> bookid;
@@ -87,7 +87,7 @@ void Book::searchBook(char* t) {
 			}
 			fin.read((char*)this, sizeof(*this));
 		}
-		if (BookFound == false) {
+		if (!BookFound) {
 			cout << "Book not Found!!!" << endl;
 		}
 
