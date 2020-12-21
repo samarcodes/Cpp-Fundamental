@@ -43,6 +43,6 @@ int main() {
 	Complex c2(30, 40);
 	c2.show();
 
-	Complex c3 = c1 + c2;
+	Complex c3 = c1 + c2; //c1.operator + (c2)
 	c3.show();
 }
