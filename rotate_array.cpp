@@ -67,7 +67,7 @@ void rotate3(int arr[], int n, int rotation_factor) {
 			int d = j + rotation_factor;
 
 			if (d >= n) {
-				d = n;
+				d = d - n;
 			}
 			//this statement is always after the first if statement
 			//coz if d>=n(10 elements 12 index) then we have to make
