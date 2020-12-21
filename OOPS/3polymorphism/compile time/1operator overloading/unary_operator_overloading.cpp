@@ -55,7 +55,7 @@ int main() {
 	Complex c1(10, 20);
 	c1.show();
 
-	Complex c2 = c1++;
+	Complex c2 = -c1; //c1.operator - ()
 	c1.show();
 	c2.show();
 
